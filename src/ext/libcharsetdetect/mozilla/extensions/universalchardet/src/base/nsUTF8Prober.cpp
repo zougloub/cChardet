@@ -39,7 +39,7 @@
 
 void  nsUTF8Prober::Reset(void)
 {
-  mCodingSM->Reset(); 
+  mCodingSM->Reset();
   mNumOfMBChar = 0;
   mState = eDetecting;
 }
@@ -84,7 +84,7 @@ float nsUTF8Prober::GetConfidence(void)
     return 0.001;
   float unlike = (float)0.99;
 
-  if (mNumOfMBChar < 6)
+  if (mNumOfMBChar < 2)
   {
     for (PRUint32 i = 0; i < mNumOfMBChar; i++)
       unlike *= ONE_CHAR_PROB;
@@ -93,4 +93,3 @@ float nsUTF8Prober::GetConfidence(void)
   else
     return (float)0.99;
 }
-
